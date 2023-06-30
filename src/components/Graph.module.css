@@ -1,0 +1,121 @@
+.main {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.svg {
+  width: 80vw;
+  height: 80vh;
+}
+
+.title {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+/* ---------- Header Stuff --------------- */
+
+.header {
+  font-size: 1.5rem;
+}
+.subheader {
+  font-size: 1rem;
+}
+
+/* ---------- Embedding stuff ------------- */
+.embeddingContainer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: 1px solid black;
+  width: 280px;
+  padding: 10px;
+  background-color: lightgray;
+}
+
+.getEmbeddings {
+  font-size: 0.8rem;
+  margin: auto;
+  margin-top: 0px;
+}
+.instructions {
+  height: 60px;
+}
+
+.buttonDisabled {
+  background-color: gray;
+  color: white;
+  cursor: not-allowed;
+}
+
+/* ---------- AXIS STYLING --------------- */
+.xLeft {
+  position: absolute;
+  width: 120px;
+  height: 20px;
+
+  top: calc(50% - 15px);
+  left: calc(50% - 50px - 340px);
+
+  text-align: center;
+
+  border: 2px dotted gray;
+  padding: 14px 0px;
+}
+.xLeft:focus {
+  outline: none;
+}
+
+.xRight {
+  position: absolute;
+  width: 120px;
+  height: 20px;
+
+  top: calc(50% - 15px);
+  left: calc(50% - 50px + 340px);
+
+  text-align: center;
+  border: 2px dotted gray;
+  padding: 14px 0px;
+}
+.xRight:focus {
+  outline: none;
+}
+
+.yTop {
+  position: absolute;
+  width: 120px;
+  height: 20px;
+
+  top: calc(50% - 65px + 340px);
+  left: calc(50% - 60px);
+
+  text-align: center;
+  border: 2px dotted gray;
+  padding: 14px 0px;
+}
+.yTop:focus {
+  outline: none;
+}
+
+.yBottom {
+  position: absolute;
+  width: 120px;
+  height: 20px;
+
+  top: calc(50% + 35px - 340px);
+  left: calc(50% - 60px);
+
+  text-align: center;
+  border: 2px dotted gray;
+  padding: 14px 0px;
+}
+.yBottom:focus {
+  outline: none;
+}

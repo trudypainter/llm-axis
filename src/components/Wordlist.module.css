@@ -1,0 +1,71 @@
+.boxOutline {
+  border: 1px solid #000000;
+  margin-top: 10px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #ffffff;
+  width: 200px;
+}
+
+.header {
+  border-bottom: 1px solid #000000;
+  background-color: lightgray;
+  padding: 8px;
+}
+
+.wordElm {
+  margin: 4px;
+  padding: 4px;
+  border: 1px dotted black;
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete {
+  color: black;
+}
+.delete:hover {
+  color: red;
+  cursor: pointer;
+}
+.new {
+  margin: 4px;
+  padding: 4px;
+  text-align: center;
+  background-color: #c4ebba;
+}
+.new:hover {
+  cursor: pointer;
+  background-color: #a3e09b;
+}
+
+.addBox {
+  padding: 8px;
+}
+.add {
+  margin: 4px;
+  padding: 2px 12px;
+  text-align: center;
+  background-color: #c4ebba;
+}
+.add:hover {
+  cursor: pointer;
+  background-color: #a3e09b;
+}
+
+.submitDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+.cancel:hover {
+  cursor: pointer;
+}
+
+.warning {
+  color: black;
+  font-size: 0.8rem;
+  margin-right: 8px;
+}
