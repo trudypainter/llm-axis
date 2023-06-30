@@ -115,9 +115,7 @@ const Graph = () => {
 
         <div className={styles.title}>
           <div className={styles.header}>Graph Axis Experiment</div>
-          <div className={styles.subheader}>
-            Powered by a large language model
-          </div>
+          <div className={styles.subheader}>Powered by GPT-4</div>
           <WordList words={words} setWords={setWords} />
         </div>
 
