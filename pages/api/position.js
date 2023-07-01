@@ -40,7 +40,7 @@ export default async (req, res) => {
 
     res.status(200).json(message);
   } catch (err) {
-    console.log("🚫", err.message);
+    console.log("🚫", err.message);co
     res.status(500).json({ error: err.message });
   }
 };

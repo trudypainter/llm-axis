@@ -13,6 +13,8 @@ const Graph = () => {
   const [yTopInputValue, setYTopInputValue] = useState("healthy");
   const [yBottomInputValue, setYBottomInputValue] = useState("unhealthy");
 
+  const [responseError, setResponseError] = useState(false);
+
   const initialWords = [
     {
       text: "Apple",
@@ -48,6 +50,7 @@ const Graph = () => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const handleButtonClick = async () => {
+    setResponseError(false);
     setEmbeddingInstruction("Reorganizing your words...");
     setButtonDisabled(true);
 
@@ -58,6 +61,14 @@ const Graph = () => {
       yBottom: yBottomInputValue,
       words: words.map((word) => word.text),
     });
+    // if the response is not successful, print an error message
+    if (response.status !== 200) {
+      console.log("Error:", response.status, response.statusText);
+      setButtonDisabled(false);
+      setResponseError(true);
+      return;
+    }
+
     // remove white space from the beginning and end of the response data
     response.data = response.data.trim();
 
@@ -121,6 +132,12 @@ const Graph = () => {
 
         <div className={styles.embeddingContainer}>
           <div className={styles.instructions}>{embeddingInstruction}</div>
+          {responseError && (
+            <div className="italic my-2">
+              There was an error with your request. Please try again. Try using
+              fewer words or simpler concepts.
+            </div>
+          )}
           <button
             className={`${styles.getEmbeddings} ${
               buttonDisabled ? styles.buttonDisabled : ""
