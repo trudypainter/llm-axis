@@ -16,8 +16,11 @@ export default async (req, res) => {
 
   const prompt = `Given the following words: ${words.join(
     ", "
-  )}, please evaluate each on a scale from 10 to 190 based on the axes labels of ${xLeft} (10) to ${xRight} (190) for x-axis and ${yBottom} (10) to ${yTop} (190) for y-axis. \\
-  None of the words should overlap or have the same value. Return the results in JSON format with attributes 'text', 'x', and 'y'. \\
+  )}, please evaluate each on a scale from 
+  10 to 190 based on the axes labels of ${xLeft} (10) to ${xRight} (190) for x-axis 
+  and ${yBottom} (10) to ${yTop} (190) for y-axis. \\
+  None of the words should overlap or have the same value. 
+  Return the results in JSON format with attributes 'text', 'x', and 'y'. \\
   Example: \\
   [
     { \\
@@ -33,9 +36,7 @@ export default async (req, res) => {
       model: "gpt-4",
       messages: [{ role: "user", content: prompt }],
     });
-    // need to figure out response object keys
     const message = response.data.choices[0].message.content;
-    console.log(message);
 
     res.status(200).json(message);
   } catch (err) {
