@@ -54,33 +54,35 @@ const Graph = () => {
     setEmbeddingInstruction("Reorganizing your words...");
     setButtonDisabled(true);
 
-    const response = await axios.post("/api/position", {
-      xLeft: xLeftInputValue,
-      xRight: xRightInputValue,
-      yTop: yTopInputValue,
-      yBottom: yBottomInputValue,
-      words: words.map((word) => word.text),
-    });
-    // if the response is not successful, print an error message
-    if (response.status !== 200) {
-      console.log("Error:", response.status, response.statusText);
+    try {
+      const response = await axios.post("/api/position", {
+        xLeft: xLeftInputValue,
+        xRight: xRightInputValue,
+        yTop: yTopInputValue,
+        yBottom: yBottomInputValue,
+        words: words.map((word) => word.text),
+      });
+
+      // remove white space from the beginning and end of the response data
+      response.data = response.data.trim();
+
+      // parse the response data as a JSON object
+      const newWords = JSON.parse(response.data);
+      console.log("Word coords", newWords);
+
+      setWords(newWords);
+      setEmbeddingInstruction(
+        "Edit the axis labels and click the button to reorganize the words."
+      );
+      setButtonDisabled(false);
+    } catch (error) {
       setButtonDisabled(false);
       setResponseError(true);
-      return;
+      setEmbeddingInstruction(
+        "Edit the axis labels and click the button to reorganize the words."
+      );
+      setButtonDisabled(false);
     }
-
-    // remove white space from the beginning and end of the response data
-    response.data = response.data.trim();
-
-    // parse the response data as a JSON object
-    const newWords = JSON.parse(response.data);
-    console.log("Word coords", newWords);
-
-    setWords(newWords);
-    setEmbeddingInstruction(
-      "Edit the axis labels and click the button to reorganize the words."
-    );
-    setButtonDisabled(false);
   };
 
   return (
@@ -133,7 +135,7 @@ const Graph = () => {
         <div className={styles.embeddingContainer}>
           <div className={styles.instructions}>{embeddingInstruction}</div>
           {responseError && (
-            <div className="italic my-2">
+            <div className="italic mb-6 text-gray-700">
               There was an error with your request. Please try again. Try using
               fewer words or simpler concepts.
             </div>
